@@ -3,7 +3,7 @@
 }
 
 header {
-
+	background-color: #404041
 }
 
 h1 {
@@ -13,6 +13,11 @@ h1 {
 
 .span-heading {
 	font-weight: 700;
+}
+
+.bottom-header {
+	color: #FFFFFF;
+	font-weight: 300;
 }
 
 /* Section 1 */
