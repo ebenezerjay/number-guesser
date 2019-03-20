@@ -2,8 +2,16 @@
 	font-family: 'Open Sans';
 }
 
+main {
+	display: flex;
+	flex: 1;
+}
+
+/* Header */
+
 header {
-	background-color: #404041
+	background-color: #404041;
+	text-align: center;
 }
 
 h1 {
@@ -24,12 +32,14 @@ h1 {
 
 #section-left {
 	background-color: #F7F7F7;
+	width: 50%
 }
 
 /* Section 2 */
 
 #section-right {
-	background-color: #404041;
+	background-color: #D0D2D3;
+	width: 50%;
 }
 
 #winner-name {
