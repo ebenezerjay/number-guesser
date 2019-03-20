@@ -34,6 +34,26 @@ h4 {
 	margin: 0px;
 }
 
+article {
+	background-color: #FFFFFF;
+	border: 1px solid #EDEDED;
+	display: flex;
+    flex-wrap: wrap;
+    height: 100px;
+}
+
+input {
+	border: 1px solid #EDEDED;
+}
+
+section {
+	margin: 15px;
+}
+
+label {
+	display: block;
+}
+
 .header-line1,
 .header-line2 {
 	border-bottom: 1px solid #D0D2D3;
@@ -63,6 +83,22 @@ h4 {
 .section-left {
 	background-color: #F7F7F7;
 	width: 50%;
+}
+
+.article-card-1 {
+
+}
+
+.set-range-heading {
+	width: 100%;
+}
+
+.ranges {
+
+}
+
+.update-button {
+	width: 35%;
 }
 
 /* Section 2 */
