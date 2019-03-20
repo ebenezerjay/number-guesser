@@ -3,17 +3,56 @@
 <head>
 	<title>NumberGuesser</title>
 	<link rel="stylesheet" type="text/css" href="styles.css">
+
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 	<header>
+
+		<h1><span class="span-heading">NUMBER</span>GUESSER</h1>
+		<h4>ULTIMATE CHALLENGER EDITION</h4>
+
 			<h1><span class="span-heading">NUMBER</span>GUESSER</h1>
 			<h4 class="bottom-header">ULTIMATE CHALLENGER EDITION</h4>
+
 	</header>
 	<main>
 		<section id="section-left">
 			<article class="article-card-1">
+
+				<h6>Set Range</h6>
+					<form>
+						<label name="Min min-range">Min Range</label>
+						<input id="min-range-input" type="text" name="min-range">
+						<label name="max-range">Max Range</label>
+						<input id="max-range-input" type="text" name="max-range">
+						<button class="update-button" id="update-button" type="submit">UPDATE</button>
+					</form>
+			</article>
+			<article class="article-card-2">
+				<p>The Current Range is <span>___</span> to <span>___</span></p>
+				<h6>Challenger 1</h6>
+					<form>
+						<label name="challenger1">Name</label>
+						<input id="player1-input"type="text" name="challenger1">
+						<label name="player1-guess">Guess</label>
+						<input type="text" name="player1-guess">
+						<h6>Challenger 2</h6>
+						<label name="challenger2">Name</label>
+						<input id="player2-input" type="text" name="challenger2">
+						<label name="player2-guess">Guess</label>
+						<input type="text" name="player2-guess">
+						<button class="game-buttons" id="submit-guess-button">SUBMIT GUESS</button>
+						<button class="game-buttons" id="reset-game-button">RESET GAME</button>
+						<button class="game-buttons" id="clear-game-button">CLEAR GAME</button>
+					</form>
+			</article>
+			<article class="article-card-3">
+			<h6>Latest Score</h6>
+				<p>Challenger 1 <span id="challenger1-name">NAME</span></p>
+
 			<h4>Set Range</h4>
 				<form>
 					<label name="Min min-range">Min Range</label>
