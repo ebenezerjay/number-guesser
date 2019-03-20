@@ -3,16 +3,25 @@
 <head>
 	<title>NumberGuesser</title>
 	<link rel="stylesheet" type="text/css" href="styles.css">
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 	<header>
+
 		<h1><span class="span-heading">NUMBER</span>GUESSER</h1>
 		<h4>ULTIMATE CHALLENGER EDITION</h4>
+
+			<h1><span class="span-heading">NUMBER</span>GUESSER</h1>
+			<h4 class="bottom-header">ULTIMATE CHALLENGER EDITION</h4>
+
 	</header>
 	<main>
-		<section>
+		<section id="section-left">
 			<article class="article-card-1">
+
 				<h6>Set Range</h6>
 					<form>
 						<label name="Min min-range">Min Range</label>
@@ -43,6 +52,38 @@
 			<article class="article-card-3">
 			<h6>Latest Score</h6>
 				<p>Challenger 1 <span id="challenger1-name">NAME</span></p>
+
+			<h4>Set Range</h4>
+				<form>
+					<label name="Min min-range">Min Range</label>
+					<input id="min-range-input" type="text" name="min-range">
+					<label name="max-range">Max Range</label>
+					<input id="max-range-input" type="text" name="max-range">
+					<button class="update-button" id="update-button" type="submit">UPDATE</button>
+			</form>
+			</article>
+			<article class="article-card-2">
+				<p>The Current Range is <span>___</span> to <span>___</span></p>
+				<h4>Challenger 1</h4>
+				<form>
+					<label>Name</label>
+					<input type="text" name="challenger1">
+					<label>Guess</label>
+					<input type="text" name="guesser1">
+					<h4>Challenger 2</h4>
+					<label>Name</label>
+					<input type="text" name="challenger2">
+					<label>Guess</label>
+					<input type="text" name="guesser2">
+					<button>SUBMIT GUESS</button>
+					<button>RESET GAME</button>
+					<button>CLEAR GAME</button>
+				</form>
+			</article>
+			<article class="article-card-3">
+			<h4>Latest Score</h4>
+				<p>Challenger 1 <span>NAME</span></p>
+
 				<p>current guess</p>
 				<h1>?</h1>
 				<p>that's too high</p>
@@ -54,11 +95,11 @@
 		</section>
 		<section id="section-right">
 			<article class="result-card">
-				<h6 id="right-card-name1">CHALLENGER 1 NAME</h6>
+				<h4 id="right-card-name1">CHALLENGER 1 NAME</h4>
 				<p>vs</p>
-				<h6 id="right-card-name2">CHALLENGER 2 NAME</h6>
-				<h3 id="winner-name">CHALLENGER 2 NAME</h3>
-				<h3 class="right-card-winner">WINNER</h3>
+				<h4 id="right-card-name2">CHALLENGER 2 NAME</h4>
+				<h2 id="winner-name">CHALLENGER 2 NAME</h2>
+				<h2 class="right-card-winner">WINNER</h2>
 				<p><span class="guess-count">?</span> GUESSES</p>
 				<p><span class="minutes">?</span>MINUTES</p>
 				<button class="delete-card">X</button>

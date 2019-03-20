@@ -1,0 +1,62 @@
+* {
+	font-family: 'Open Sans';
+}
+
+main {
+	display: flex;
+	flex: 1;
+}
+
+/* Header */
+
+header {
+	background-color: #404041;
+	text-align: center;
+}
+
+h1 {
+	color: #DD1972;
+	font-weight: 300;
+}
+
+.span-heading {
+	font-weight: 700;
+}
+
+.bottom-header {
+	color: #FFFFFF;
+	font-weight: 300;
+}
+
+/* Section 1 */
+
+#section-left {
+	background-color: #F7F7F7;
+	width: 50%
+}
+
+/* Section 2 */
+
+#section-right {
+	background-color: #D0D2D3;
+	width: 50%;
+}
+
+#winner-name {
+	font-weight: 700;
+}
+
+.right-card-winner {
+	font-weight: 300;
+}
+
+/* Buttons */
+
+button {
+	background-color: #6E6E6E;
+	color: #FFFFFF; 
+}
+
+button:hover {
+	background-color: #DD1972;
+}
