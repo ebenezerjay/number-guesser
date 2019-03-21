@@ -39,9 +39,11 @@ article {
 	background-color: #FFFFFF;
 	border: 1px solid #EDEDED;
 	display: flex;
-    flex-wrap: wrap;
-    margin: 10px;
-    padding: 5px;
+   flex-wrap: wrap;
+   margin: 10px;
+   padding: 5px;
+   display: flex;
+   flex-wrap: wrap;
 }
 
 input {
@@ -50,7 +52,7 @@ input {
 }
 
 section {
-	margin: 15px;
+	margin: 0px;
 }
 
 label {
@@ -86,12 +88,13 @@ label {
 .section-left {
 	background-color: #F7F7F7;
 	width: 50%;
+	border-right: 1px solid darkgray;
 }
 
 /* Article 1 */
 
 .article-card-1 {
-	height: 100px;
+
 }
 
 .set-range-heading {
@@ -104,10 +107,14 @@ label {
     display: inline-block;
 }
 
+.update-button {
+	background-color: #D0D2D3;
+}
+
 /* Article 2 */
 
 .article-card-2 {
-	height: 300px;
+
 }
 
 .challenger-name-input {
@@ -123,10 +130,18 @@ label {
 	margin-bottom: 25px; 
 }
 
+#reset-game-button {
+	background-color: #D0D2D3;
+}
+
+#clear-game-button {
+	background-color: #D0D2D3;
+}
+
 /* Article 3 */
 
 .article-card-3 {
-	height: 250px
+
 }
 
 .latest-score-heading {
@@ -164,4 +179,15 @@ button {
 
 button:hover {
 	background-color: #DD1972;
+}
+
+/* Media Query */
+
+@media screen and (max-width: 470px) {
+
+	section {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	
 }
