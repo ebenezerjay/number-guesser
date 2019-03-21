@@ -45,7 +45,7 @@ function generateRandomNumber(e) {
 }
 
 function random() {
-  var random = Math.floor(Math.random() * (parseInt(maxRangeInput.value) - parseInt(minRangeInput.value) + 1)) + parseInt(minRangeInput.value);
+  var random = Math.floor(Math.random() * (parseInt(maxRangeInput.value) - parseInt(minRangeInput.value) + 1));
   return random;
 }
 
@@ -108,8 +108,6 @@ function clearGame(e) {
 	console.log("Ok");
 	// e.preventDefault();
 }
-
-
 
 
 
