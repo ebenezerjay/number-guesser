@@ -20,7 +20,7 @@ var clearGameButton = document.querySelector("#clear-game-button");
 var resetGameButton = document.querySelector("#reset-game-button");
 
 minRangeInput.addEventListener("input", function(e) {
-	if (minRangeInput.value != "" || null && maxRangeInput != "" || null) {
+	if (minRangeInput.value != "" || null && maxRangeInput.value != "" || null) {
 		document.getElementById("update-button").disabled = false;
 	}
 });
@@ -29,12 +29,11 @@ submitButton.addEventListener("click", updateGuesses);
 updateButton.addEventListener("click", generateRandomNumber);
 player1GuessInput.addEventListener("input", function() {
 	document.getElementById("clear-game-button").disabled = false;
-	clearGame();
 });
 player1GuessInput.addEventListener("input", function() {
 	document.getElementById("reset-game-button").disabled = false;
-	resetGame();
-})
+});
+resetGameButton.addEventListener("click", resetGame);
 
 function generateRandomNumber(e) {
 	minRangeNumber.innerText = minRangeInput.value;
@@ -45,7 +44,7 @@ function generateRandomNumber(e) {
 }
 
 function random() {
-  var random = Math.floor(Math.random() * (parseInt(maxRangeInput.value) - parseInt(minRangeInput.value) + 1));
+  var random = Math.floor(Math.random() * (parseInt(maxRangeInput.value) - parseInt(minRangeInput.value) + 1))+ parseInt(minRangeInput.value);
   return random;
 }
 
@@ -101,13 +100,23 @@ function appendCard() {
 }
 
 function resetGame(e) {
-	// e.preventDefault();
+	minRangeInput.value = "";
+	maxRangeInput.value = "";
+	maxRangeNumber.value = "";
+	minRangeNumber.value = "";
+	player1NameInput.value = "";
+	player2NameInput.value = "";
+	player1GuessInput.value = "";
+	player2GuessInput.value = "";
+	randomNumber = null;
+	challenger1Name.innerText = "";
+	challenger2Name.innerText = "";
+	player1Guess.innerText = "?";
+	player2Guess.innerText = "?";
+	console.log("ok");
+	e.preventDefault();
 }
 
-function clearGame(e) {
-	console.log("Ok");
-	// e.preventDefault();
-}
 
 
 
