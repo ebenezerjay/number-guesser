@@ -32,6 +32,7 @@ h1 {
 
 h4 {
 	margin: 0px;
+	margin-bottom: 10px;
 }
 
 article {
@@ -39,11 +40,13 @@ article {
 	border: 1px solid #EDEDED;
 	display: flex;
     flex-wrap: wrap;
-    height: 100px;
+    margin: 10px;
+    padding: 5px;
 }
 
 input {
 	border: 1px solid #EDEDED;
+	width: 100%;
 }
 
 section {
@@ -85,8 +88,10 @@ label {
 	width: 50%;
 }
 
-.article-card-1 {
+/* Article 1 */
 
+.article-card-1 {
+	height: 100px;
 }
 
 .set-range-heading {
@@ -94,11 +99,45 @@ label {
 }
 
 .ranges {
-
+	width: 35%;
+    margin-right: 5px;
+    display: inline-block;
 }
 
-.update-button {
-	width: 35%;
+/* Article 2 */
+
+.article-card-2 {
+	height: 300px;
+}
+
+.challenger-name-input {
+	display: inline-block;
+	width: 40%;
+	margin-right: 5px;
+	margin-bottom: 25px;
+}
+
+.challenger-guess-input{
+	display: inline-block;
+	width: 40%;
+	margin-bottom: 25px; 
+}
+
+/* Article 3 */
+
+.article-card-3 {
+	height: 250px
+}
+
+.latest-score-heading {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.challengers-latest-guess {
+	display: inline-block;
+	width: 50%;
+	text-align: center;
 }
 
 /* Section 2 */
@@ -120,7 +159,7 @@ label {
 
 button {
 	background-color: #6E6E6E;
-	color: #FFFFFF; 
+	color: #FFFFFF;
 }
 
 button:hover {
