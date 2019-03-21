@@ -34,30 +34,42 @@
 				<p>The Current Range is <span>___</span> to <span>___</span></p>
 					<form>
 						<h4>Challenger 1</h4>
-						<label name="challenger1">Name</label>
-						<input id="player1-input"type="text" name="challenger1">
-						<label name="player1-guess">Guess</label>
-						<input type="text" name="player1-guess">
+						<div class="challenger-name-input">
+							<label name="challenger1">Name</label>
+							<input id="player1-input"type="text" name="challenger1">
+						</div>
+						<div class="challenger-guess-input">
+							<label name="player1-guess">Guess</label>
+							<input type="text" name="player1-guess">
+						</div>
 						<h4>Challenger 2</h4>
-						<label name="challenger2">Name</label>
-						<input id="player2-input" type="text" name="challenger2">
-						<label name="player2-guess">Guess</label>
-						<input type="text" name="player2-guess">
+						<div class="challenger-name-input">
+							<label name="challenger2">Name</label>
+							<input id="player2-input" type="text" name="challenger2">
+						</div>
+						<div class="challenger-guess-input">
+							<label name="player2-guess">Guess</label>
+							<input type="text" name="player2-guess">
+						</div>
 						<button class="game-buttons" id="submit-guess-button">SUBMIT GUESS</button>
 						<button class="game-buttons" id="reset-game-button">RESET GAME</button>
 						<button class="game-buttons" id="clear-game-button">CLEAR GAME</button>
 					</form>
 			</article>
 			<article class="article-card-3">
-				<h4>Latest Score</h4>
-				<p>Challenger 1 <span id="challenger1-name">NAME</span></p>
-				<p>current guess</p>
-				<h1>?</h1>
-				<p>that's too high</p>
-				<p>Challenger 2 <span id="challenger2-name">NAME</span></p>
-				<p>current guess</p>
-				<h1>?</h1>
-				<p>that's too low</p>
+				<h4 class="latest-score-heading">Latest Score</h4>
+				<div class="challengers-latest-guess">
+					<p>Challenger 1 <span id="challenger1-name">NAME</span></p>
+					<p>current guess</p>
+					<h1>?</h1>
+					<p>that's too high</p>
+				</div>
+				<div class="challengers-latest-guess">
+					<p>Challenger 2 <span id="challenger2-name">NAME</span></p>
+					<p>current guess</p>
+					<h1>?</h1>
+					<p>that's too low</p>
+				</div>
 			</article>
 		</section>
 		<section class="section-right">
