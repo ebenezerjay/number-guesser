@@ -81,6 +81,7 @@ function p2HintMessage() {
 		player2Hint.innerText = "ERROR";
 	} else {
 		player2Hint.innerText = "Boom!";
+		appendCard();
 	}
 }
 
