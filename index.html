@@ -27,33 +27,33 @@
 							<label name="max-range">Max Range</label>
 							<input id="max-range-input" type="text" name="max-range">
 						</div>
-						<button class="update-button" id="update-button" type="submit">UPDATE</button>
+						<button class="update-button" id="update-button" type="submit" disabled="true">UPDATE</button>
 					</form>
 			</article>
 			<article class="article-card-2">
-				<p>The Current Range is <span>___</span> to <span>___</span></p>
+				<p>The Current Range is <span id="min-range-number">___</span> to <span id="max-range-number">___</span></p>
 					<form>
 						<h4>Challenger 1</h4>
 						<div class="challenger-name-input">
 							<label name="challenger1">Name</label>
-							<input id="player1-input"type="text" name="challenger1">
+							<input id="player1-name-input" type="text" name="challenger1">
 						</div>
 						<div class="challenger-guess-input">
 							<label name="player1-guess">Guess</label>
-							<input type="text" name="player1-guess">
+							<input id="player1-guess-input"type="text" name="player1-guess">
 						</div>
 						<h4>Challenger 2</h4>
 						<div class="challenger-name-input">
 							<label name="challenger2">Name</label>
-							<input id="player2-input" type="text" name="challenger2">
+							<input id="player2-name-input" type="text" name="challenger2">
 						</div>
 						<div class="challenger-guess-input">
 							<label name="player2-guess">Guess</label>
-							<input type="text" name="player2-guess">
+							<input id="player2-guess-input"type="text" name="player2-guess">
 						</div>
 						<button class="game-buttons" id="submit-guess-button">SUBMIT GUESS</button>
-						<button class="game-buttons" id="reset-game-button">RESET GAME</button>
-						<button class="game-buttons" id="clear-game-button">CLEAR GAME</button>
+						<button class="game-buttons" id="reset-game-button" type="submit" disabled="true">RESET GAME</button>
+						<button class="game-buttons" id="clear-game-button" type="submit" disabled="true">CLEAR GAME</button>
 					</form>
 			</article>
 			<article class="article-card-3">
@@ -61,28 +61,19 @@
 				<div class="challengers-latest-guess">
 					<p>Challenger 1 <span id="challenger1-name">NAME</span></p>
 					<p>current guess</p>
-					<h1>?</h1>
-					<p>that's too high</p>
+					<h1 id="player1-guess">?</h1>
+					<p id="p1-hint"></p>
 				</div>
 				<div class="challengers-latest-guess">
 					<p>Challenger 2 <span id="challenger2-name">NAME</span></p>
 					<p>current guess</p>
-					<h1>?</h1>
-					<p>that's too low</p>
+					<h1 id="player2-guess">?</h1>
+					<p id="p2-hint"></p>
 				</div>
 			</article>
 		</section>
 		<section class="section-right">
-			<article class="result-card">
-				<h4 id="right-card-name1">CHALLENGER 1 NAME</h4>
-				<p>vs</p>
-				<h4 id="right-card-name2">CHALLENGER 2 NAME</h4>
-				<h2 id="winner-name">CHALLENGER 2 NAME</h2>
-				<h2 class="right-card-winner">WINNER</h2>
-				<p><span class="guess-count">?</span> GUESSES</p>
-				<p><span class="minutes">?</span>MINUTES</p>
-				<button class="delete-card">X</button>
-			</article>
+			
 		</section>
 	</main>
 	<script type="text/javascript" src="main.js"></script>
