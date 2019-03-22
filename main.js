@@ -87,14 +87,18 @@ function p2HintMessage() {
 function appendCard() {
 	sectionRight.innerHTML =
 	 ` <article class="result-card">
-		<h4 id="right-card-name1">CHALLENGER 1 NAME</h4>
-		<p>vs</p>
-		<h4 id="right-card-name2">CHALLENGER 2 NAME</h4>
+		<div class="result-card-vs">
+		<h5 id="right-card-name1">CHALLENGER 1 NAME</h5>
+		<p class="result-card-p-tag">vs</p>
+		<h5 id="right-card-name2">CHALLENGER 2 NAME</h5>
+		</div>
 		<h2 id="winner-name">CHALLENGER 2 NAME</h2>
 		<h2 class="right-card-winner">WINNER</h2>
+		<div class="result-card-stats">
 		<p><span class="guess-count">?</span> GUESSES</p>
-		<p><span class="minutes">?</span>MINUTES</p>
+		<p><span class="minutes">?</span> MINUTES</p>
 		<button class="delete-card">X</button>
+		</div>
 	   </article>
 	` + sectionRight.innerHTML;
 }
