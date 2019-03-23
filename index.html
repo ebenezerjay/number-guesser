@@ -20,11 +20,11 @@
 				<h4 class="set-range-heading">Set Range</h4>
 					<form>
 						<div class="ranges">
-							<label name="min-range">Min Range</label>
+							<label for="min-range" name="min-range">Min Range</label>
 							<input id="min-range-input" type="number" name="min-range">
 						</div>
 						<div class="ranges">
-							<label name="max-range">Max Range</label>
+							<label for="max-range" name="max-range">Max Range</label>
 							<input id="max-range-input" type="number" name="max-range">
 						</div>
 						<button class="update-button" id="update-button" type="submit" disabled="true">UPDATE</button>
@@ -35,28 +35,28 @@
 					<form>
 						<h4>Challenger 1</h4>
 						<div class="challenger-name-input">
-							<label name="challenger1">Name</label>
+							<label for="challenger1" name="challenger1">Name</label>
 							<input id="player1-name-input" type="text" name="challenger1">
 						</div>
 						<div class="challenger-guess-input">
-							<label name="player1-guess">Guess</label>
+							<label for="player1-guess" name="player1-guess">Guess</label>
 							<input id="player1-guess-input"type="number" name="player1-guess">
 						</div>
 						<h4>Challenger 2</h4>
 						<div class="challenger-name-input">
-							<label name="challenger2">Name</label>
+							<label for="challenger2" name="challenger2">Name</label>
 							<input id="player2-name-input" type="text" name="challenger2">
 						</div>
 						<div class="challenger-guess-input">
-							<label name="player2-guess">Guess</label>
+							<label for="player2-guess" name="player2-guess">Guess</label>
 							<input id="player2-guess-input"type="number" name="player2-guess">
 						</div>
 					</form>
-						<div class="article-2-buttons">
-							<button class="game-buttons" id="submit-guess-button">SUBMIT GUESS</button>
-							<button class="game-buttons" id="reset-game-button" disabled="true">RESET GAME</button>
-							<button class="game-buttons" id="clear-game-button" type="reset" disabled="true">CLEAR GAME</button>
-						</div>
+					<div class="article-2-buttons">
+						<button class="game-buttons" id="submit-guess-button" type="submit" disabled="true">SUBMIT GUESS</button>
+					  <button class="game-buttons" id="reset-game-button" disabled="true">RESET GAME</button>
+					  <button class="game-buttons" id="clear-game-button" type="reset" disabled="true">CLEAR GAME</button>
+					</div>
 			</article>
 			<article class="article-card-3">
 				<h4 class="latest-score-heading">Latest Score</h4>
