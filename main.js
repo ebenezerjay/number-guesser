@@ -19,19 +19,53 @@ var sectionRight = document.querySelector(".section-right");
 var clearGameButton = document.querySelector("#clear-game-button");
 var resetGameButton = document.querySelector("#reset-game-button");
 
+
 minRangeInput.addEventListener("input", function(e) {
 	if (minRangeInput.value != "" || null && maxRangeInput.value != "" || null) {
 		document.getElementById("update-button").disabled = false;
+		updateButton.style.backgroundColor = "#6e6e6e";
+	} else if (minRangeInput.value === "" || null && maxRangeInput.value === "" || null) {
+		document.getElementById("update-button").disabled = true;
+		updateButton.style.backgroundColor = "#d0d2d3";
 	}
 });
 
-submitButton.addEventListener("click", updateGuesses);
 updateButton.addEventListener("click", generateRandomNumber);
-player1GuessInput.addEventListener("input", function() {
-	document.getElementById("clear-game-button").disabled = false;
+
+player1GuessInput.addEventListener('keyup', function() {
+	if (player1GuessInput.value < minRangeInput.value || player1GuessInput.value > maxRangeInput.value) {
+		document.getElementById("submit-guess-button").disabled = true;
+	} else {
+		document.getElementById("submit-guess-button").disabled = false;
+	}
 });
+
+player2GuessInput.addEventListener("keyup", function() {
+	if (player2GuessInput.value < minRangeInput.value || player2GuessInput.value > maxRangeInput.value) {
+		document.getElementById("submit-guess-button").disabled = true;
+	} else {
+		document.getElementById("submit-guess-button").disabled = false;
+	}
+});
+
+submitButton.addEventListener("click", function(e) {
+		p1UpdateGuess();
+		p2UpdateGuess();
+	e.preventDefault();
+});
+
 player1GuessInput.addEventListener("input", function() {
-	document.getElementById("reset-game-button").disabled = false;
+	if (player1GuessInput.value != "" || null && player2GuessInput.value != "" || null) {
+		document.getElementById("clear-game-button").disabled = false;
+	}
+});
+
+player1GuessInput.addEventListener("input", function() {
+	if (player1GuessInput.value != "" || null && player2GuessInput.value != "" || null) {
+		document.getElementById("reset-game-button").disabled = false;
+	} else if (player1GuessInput.value === "" || null && player2GuessInput.value === "" || null) {
+		document.getElementById("reset-game-button").disabled = true;
+	}
 });
 resetGameButton.addEventListener("click", resetGame);
 
@@ -48,15 +82,37 @@ function random() {
   return random;
 }
 
-function updateGuesses(e) {
-	challenger1Name.innerText = player1NameInput.value;
-	challenger2Name.innerText = player2NameInput.value;
-	player1Guess.innerText = player1GuessInput.value;
-	player2Guess.innerText = player2GuessInput.value;
-	p1HintMessage();
-	p2HintMessage();
-	e.preventDefault();
-}
+function p1UpdateGuess() {
+	// if (player1GuessInput.value > maxRangeInput.value) {
+	// 	player1Guess.innerText = "out of range";
+	// 	player1Guess.style.color = "red";
+	// 	player1Guess.style.fontSize = "200%";
+	// 	} else if (player1GuessInput.value < minRangeInput.value) {
+	// 	player1Guess.innerText = "out of range";
+	// 	player1Guess.style.color = "red";
+	// 	player1Guess.style.fontSize = "200%";
+	// 	} else {
+		challenger1Name.innerText = player1NameInput.value;
+		player1Guess.innerText = player1GuessInput.value;
+		p1HintMessage();
+	}
+// }
+
+function p2UpdateGuess() {
+	// if (player2GuessInput.value > maxRangeInput.value) {
+	// 	player2Guess.innerText = "out of range";
+	// 	player2Guess.style.color = "red";
+	// 	player2Guess.style.fontSize = "200%";
+	// 	} else if (player2GuessInput.value < minRangeInput.value) {
+	// 	player2Guess.innerText = "out of range";
+	// 	player2Guess.style.color = "red";
+	// 	player2Guess.style.fontSize = "200%";
+	// 	} else {
+		challenger2Name.innerText = player2NameInput.value;
+		player2Guess.innerText = player2GuessInput.value;
+		p2HintMessage();
+	}
+// }
 
 function p1HintMessage() {
 	if (player1GuessInput.value < randomNumber) {
@@ -117,6 +173,9 @@ function resetGame(e) {
 	challenger2Name.innerText = "";
 	player1Guess.innerText = "?";
 	player2Guess.innerText = "?";
+	player1Hint.innerText = "";
+	player2Hint.innerText = "";
+
 	console.log("ok");
 	e.preventDefault();
 }
