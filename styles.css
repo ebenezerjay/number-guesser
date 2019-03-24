@@ -57,6 +57,7 @@ section {
 label {
 	display: block;
 	color: #6E6E6E;
+	font-size: 13px;
 }
 
 form {
@@ -253,7 +254,7 @@ button:hover {
 
 /* Media Query */
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 575px) {
 
 	header {
 		width: 100%;
@@ -290,8 +291,6 @@ button:hover {
 	form {
 		width: 75%;
 	}
-
-@media only screen and (max-width: 470px) {
 
 	section {
 		display: flex;
