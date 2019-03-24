@@ -58,17 +58,25 @@ submitButton.addEventListener('click', function(e) {
 player1GuessInput.addEventListener("input", function() {
 	if (player1GuessInput.value != "" || null && player2GuessInput.value != "" || null) {
 		document.getElementById("clear-game-button").disabled = false;
+		clearGameButton.style.backgroundColor = "#6e6e6e";
+	} else if (player1GuessInput.value === "" || null && player2GuessInput.value === "" || null) {
+		document.getElementById("clear-game-button").disabled = true;
+		clearGameButton.style.backgroundColor = "#d0d2d3";
 	}
 });
 
-player1GuessInput.addEventListener("input", function() {
+player1GuessInput.addEventListener("input", function(e) {
 	if (player1GuessInput.value != "" || null && player2GuessInput.value != "" || null) {
 		document.getElementById("reset-game-button").disabled = false;
+		resetGameButton.style.backgroundColor = "#6e6e6e";
 	} else if (player1GuessInput.value === "" || null && player2GuessInput.value === "" || null) {
 		document.getElementById("reset-game-button").disabled = true;
+		resetGameButton.style.backgroundColor = "#d0d2d3";
 	}
 });
 resetGameButton.addEventListener("click", resetGame);
+
+clearGameButton.addEventListener('click', clearGame);
 
 function generateRandomNumber(e) {
 	minRangeNumber.innerText = minRangeInput.value;
@@ -184,23 +192,34 @@ function theWinner() {
 }
 
 function resetGame(e) {
-	minRangeInput.value = "";
-	maxRangeInput.value = "";
+	generateRandomNumber();
 	maxRangeNumber.value = "";
 	minRangeNumber.value = "";
 	player1NameInput.value = "";
 	player2NameInput.value = "";
 	player1GuessInput.value = "";
 	player2GuessInput.value = "";
-	randomNumber = null;
 	challenger1Name.innerText = "";
 	challenger2Name.innerText = "";
 	player1Guess.innerText = "?";
 	player2Guess.innerText = "?";
 	player1Hint.innerText = "";
 	player2Hint.innerText = "";
+	document.getElementById("reset-game-button").disabled = true;
+	resetGameButton.style.backgroundColor = "#d0d2d3";
 
 	console.log("ok");
+	e.preventDefault();
+}
+
+function clearGame(e) {
+	player1NameInput.value = "";
+	player2NameInput.value = "";
+	player1GuessInput.value = "";
+	player2GuessInput.value = "";
+	document.getElementById("clear-game-button").disabled = true;
+	clearGameButton.style.backgroundColor = "#d0d2d3";
+
 	e.preventDefault();
 }
 
