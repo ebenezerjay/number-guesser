@@ -18,6 +18,8 @@ var randomNumber = null;
 var sectionRight = document.querySelector(".section-right");
 var clearGameButton = document.querySelector("#clear-game-button");
 var resetGameButton = document.querySelector("#reset-game-button");
+var deleteButton = document.querySelector(".delete-card");
+
 
 
 minRangeInput.addEventListener("input", function(e) {
@@ -32,27 +34,26 @@ minRangeInput.addEventListener("input", function(e) {
 
 updateButton.addEventListener("click", generateRandomNumber);
 
-player1GuessInput.addEventListener('keyup', function() {
-	if (player1GuessInput.value < minRangeInput.value || player1GuessInput.value > maxRangeInput.value) {
-		document.getElementById("submit-guess-button").disabled = true;
-	} else {
-		document.getElementById("submit-guess-button").disabled = false;
-	}
-});
-
-player2GuessInput.addEventListener("keyup", function() {
-	if (player2GuessInput.value < minRangeInput.value || player2GuessInput.value > maxRangeInput.value) {
-		document.getElementById("submit-guess-button").disabled = true;
-	} else {
-		document.getElementById("submit-guess-button").disabled = false;
-	}
-});
-
-submitButton.addEventListener("click", function(e) {
+submitButton.addEventListener('click', function(e) {
 		p1UpdateGuess();
 		p2UpdateGuess();
-	e.preventDefault();
-});
+	});
+
+// submitButton.addEventListener("click", function(e) {
+// 	if (player2GuessInput.value < minRangeInput.value || player2GuessInput.value > maxRangeInput.value) {
+// 		player2Guess.innerText = "out of range";
+// 		// document.getElementById("submit-guess-button").disabled = true;
+// 	} else {
+// 		updateGuesses();
+// 		// document.getElementById("submit-guess-button").disabled = false;
+// 	}
+// });
+
+// submitButton.addEventListener("click", function(e) {
+// 		p1UpdateGuess();
+// 		p2UpdateGuess();
+// 	e.preventDefault();
+// });
 
 player1GuessInput.addEventListener("input", function() {
 	if (player1GuessInput.value != "" || null && player2GuessInput.value != "" || null) {
@@ -82,37 +83,44 @@ function random() {
   return random;
 }
 
+// function updateGuesses() {
+// 	p1UpdateGuess();
+// 	p2UpdateGuess();
+// 	// e.preventDefault();
+// }
+
 function p1UpdateGuess() {
-	// if (player1GuessInput.value > maxRangeInput.value) {
-	// 	player1Guess.innerText = "out of range";
-	// 	player1Guess.style.color = "red";
-	// 	player1Guess.style.fontSize = "200%";
-	// 	} else if (player1GuessInput.value < minRangeInput.value) {
-	// 	player1Guess.innerText = "out of range";
-	// 	player1Guess.style.color = "red";
-	// 	player1Guess.style.fontSize = "200%";
-	// 	} else {
+		console.log(minRangeInput.value);
+	if (player1GuessInput.value < minRangeNumber.value) {
+		player1Guess.innerText = "out of range";
+		player1Guess.style.color = "red";
+		player1Guess.style.fontSize = "200%";
+		} else if (player1GuessInput.value > maxRangeNumber.value) {
+		player1Guess.innerText = "out of range";
+		player1Guess.style.color = "red";
+		player1Guess.style.fontSize = "200%";
+		} else {
 		challenger1Name.innerText = player1NameInput.value;
 		player1Guess.innerText = player1GuessInput.value;
 		p1HintMessage();
 	}
-// }
+}
 
 function p2UpdateGuess() {
-	// if (player2GuessInput.value > maxRangeInput.value) {
-	// 	player2Guess.innerText = "out of range";
-	// 	player2Guess.style.color = "red";
-	// 	player2Guess.style.fontSize = "200%";
-	// 	} else if (player2GuessInput.value < minRangeInput.value) {
-	// 	player2Guess.innerText = "out of range";
-	// 	player2Guess.style.color = "red";
-	// 	player2Guess.style.fontSize = "200%";
-	// 	} else {
+	if (player2GuessInput.value < minRangeNumber.value) {
+		player2Guess.innerText = "out of range";
+		player2Guess.style.color = "red";
+		player2Guess.style.fontSize = "200%";
+		} else if (player2GuessInput.value > maxRangeNumber.value) {
+		player2Guess.innerText = "out of range";
+		player2Guess.style.color = "red";
+		player2Guess.style.fontSize = "200%";
+		} else {
 		challenger2Name.innerText = player2NameInput.value;
 		player2Guess.innerText = player2GuessInput.value;
 		p2HintMessage();
 	}
-// }
+}
 
 function p1HintMessage() {
 	if (player1GuessInput.value < randomNumber) {
@@ -124,6 +132,7 @@ function p1HintMessage() {
 		} else {
 		player1Hint.innerText = "Boom!";
 		appendCard();
+		theWinner();
 	}
 }
 
@@ -137,26 +146,41 @@ function p2HintMessage() {
 	} else {
 		player2Hint.innerText = "Boom!";
 		appendCard();
+		theWinner();
 	}
 }
 
 function appendCard() {
+	var winnerName = document.querySelector("#winner-name");
+	var guessCount = document.querySelector(".guess-count");
+	var guessTime = document.querySelector(".minutes")
+
 	sectionRight.innerHTML =
 	 ` <article class="result-card">
 		<div class="result-card-vs">
-		<h5 id="right-card-name1">CHALLENGER 1 NAME</h5>
+		<h5 id="right-card-name1">${player1NameInput.value}</h5>
 		<p class="result-card-p-tag">vs</p>
-		<h5 id="right-card-name2">CHALLENGER 2 NAME</h5>
+		<h5 id="right-card-name2">${player2NameInput.value}</h5>
 		</div>
-		<h2 id="winner-name">CHALLENGER 2 NAME</h2>
+		<h2 id="winner-name" class"winner-name">Challenger 1 Name</h2>
 		<h2 class="right-card-winner">WINNER</h2>
 		<div class="result-card-stats">
-		<p><span class="guess-count">?</span> GUESSES</p>
-		<p><span class="minutes">?</span> MINUTES</p>
+		<p><span class="guess-count"></span> GUESSES</p>
+		<p><span class="minutes"></span> MINUTES</p>
 		<button class="delete-card">X</button>
 		</div>
 	   </article>
 	` + sectionRight.innerHTML;
+
+}
+
+function theWinner() {
+	var winnerName = document.querySelector("#winner-name");
+	if (player1GuessInput.value == randomNumber) {
+    winnerName.innerText = player1NameInput.value;
+  } else {
+    winnerName.innerText = player2NameInput.value;
+  }
 }
 
 function resetGame(e) {
@@ -179,7 +203,6 @@ function resetGame(e) {
 	console.log("ok");
 	e.preventDefault();
 }
-
 
 
 
