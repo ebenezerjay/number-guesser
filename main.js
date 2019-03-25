@@ -35,8 +35,13 @@ minRangeInput.addEventListener("input", function(e) {
 updateButton.addEventListener("click", generateRandomNumber);
 
 submitButton.addEventListener('click', function(e) {
+		if (player1GuessInput.value === "" || null || player2GuessInput.value === "" || null) {
+		alert("Enter a number for both guess fields");
+	} else {
 		p1UpdateGuess();
 		p2UpdateGuess();
+		// dificulty();
+		}
 	});
 
 player1GuessInput.addEventListener("input", function() {
@@ -58,14 +63,23 @@ player1GuessInput.addEventListener("input", function(e) {
 		resetGameButton.style.backgroundColor = "#d0d2d3";
 	}
 });
+
 resetGameButton.addEventListener("click", resetGame);
 
 clearGameButton.addEventListener('click', clearGame);
 
 function generateRandomNumber(e) {
-	minRangeNumber.innerText = minRangeInput.value;
-	maxRangeNumber.innerText = maxRangeInput.value;
-	randomNumber = random();
+	var minRangeInteger = parseInt(minRangeInput.value);
+	var maxRangeInteger = parseInt(maxRangeInput.value);
+
+	if (minRangeInteger > maxRangeInteger || maxRangeInteger < minRangeInteger) {
+		minRangeNumber.innerText = "error";
+		maxRangeNumber.innerText = "error";
+	}  else {
+	minRangeNumber.innerText = minRangeInteger;
+	maxRangeNumber.innerText = maxRangeInteger;
+	randomNumber = random();	
+	}
 	e.preventDefault();
 	console.log(randomNumber);
 }
@@ -73,6 +87,13 @@ function generateRandomNumber(e) {
 function random() {
   var random = Math.floor(Math.random() * (parseInt(maxRangeInput.value) - parseInt(minRangeInput.value) + 1))+ parseInt(minRangeInput.value);
   return random;
+}
+
+function dificulty() {
+	var minRangeInteger = parseInt(minRangeInput.value);
+	var maxRangeInteger = parseInt(maxRangeInput.value);
+		minRangeNumber.innerText = minRangeInteger - 10;
+		maxRangeNumber.innerText = maxRangeInteger + 10;
 }
 
 function p1UpdateGuess() {
@@ -126,6 +147,7 @@ function p1HintMessage() {
 		player1Hint.innerText = "Boom!";
 		appendCard();
 		theWinner();
+		dificulty();
 	}
 }
 
@@ -140,6 +162,7 @@ function p2HintMessage() {
 		player2Hint.innerText = "Boom!";
 		appendCard();
 		theWinner();
+		dificulty();
 	}
 }
 
@@ -147,9 +170,12 @@ function appendCard() {
 	var winnerName = document.querySelector("#winner-name");
 	var guessCount = document.querySelector(".guess-count");
 	var guessTime = document.querySelector(".minutes")
+	var cardCounter = cardCounter + 1;
+	var articleId = "result-card" + cardCounter;
+	var deleteId = "delete-card" + cardCounter;
 
 	sectionRight.innerHTML =
-	 ` <article class="result-card">
+	 ` <article class="result-card" data-card="${cardCounter}">
 		<div class="result-card-vs">
 		<h5 id="right-card-name1">${player1NameInput.value}</h5>
 		<p class="result-card-p-tag">vs</p>
@@ -160,11 +186,14 @@ function appendCard() {
 		<div class="result-card-stats">
 		<p><span class="guess-count"></span> GUESSES</p>
 		<p><span class="minutes"></span> MINUTES</p>
-		<button class="delete-card">X</button>
+		<button class="delete-card" data-card="${cardCounter}">X</button>
 		</div>
 	   </article>
 	` + sectionRight.innerHTML;
-
+	var deleteButtonArray = document.querySelectorAll(".delete-card");
+	for (var i = 0; i < deleteButtonArray.length; i++) {
+		deleteButtonArray[i].addEventListener('click', removeCard);
+	}
 }
 
 function theWinner() {
@@ -174,6 +203,7 @@ function theWinner() {
   } else {
     winnerName.innerText = player2NameInput.value;
   }
+  generateRandomNumber();
 }
 
 function resetGame(e) {
@@ -208,7 +238,10 @@ function clearGame(e) {
 	e.preventDefault();
 }
 
-
+function removeCard(e) {
+	event.target.parentElement.parentElement.remove();
+	e.preventDefault();
+}
 
 
 
