@@ -39,22 +39,6 @@ submitButton.addEventListener('click', function(e) {
 		p2UpdateGuess();
 	});
 
-// submitButton.addEventListener("click", function(e) {
-// 	if (player2GuessInput.value < minRangeInput.value || player2GuessInput.value > maxRangeInput.value) {
-// 		player2Guess.innerText = "out of range";
-// 		// document.getElementById("submit-guess-button").disabled = true;
-// 	} else {
-// 		updateGuesses();
-// 		// document.getElementById("submit-guess-button").disabled = false;
-// 	}
-// });
-
-// submitButton.addEventListener("click", function(e) {
-// 		p1UpdateGuess();
-// 		p2UpdateGuess();
-// 	e.preventDefault();
-// });
-
 player1GuessInput.addEventListener("input", function() {
 	if (player1GuessInput.value != "" || null && player2GuessInput.value != "" || null) {
 		document.getElementById("clear-game-button").disabled = false;
@@ -91,19 +75,16 @@ function random() {
   return random;
 }
 
-// function updateGuesses() {
-// 	p1UpdateGuess();
-// 	p2UpdateGuess();
-// 	// e.preventDefault();
-// }
-
 function p1UpdateGuess() {
-		console.log(minRangeInput.value);
-	if (player1GuessInput.value < minRangeNumber.value) {
+	var player1GuessInteger = parseInt(player1GuessInput.value);
+	var minRangeInteger = parseInt(minRangeInput.value);
+	var maxRangeInteger = parseInt(maxRangeInput.value);
+
+		if (player1GuessInteger < minRangeInteger) {
 		player1Guess.innerText = "out of range";
 		player1Guess.style.color = "red";
 		player1Guess.style.fontSize = "200%";
-		} else if (player1GuessInput.value > maxRangeNumber.value) {
+		} else if (player1GuessInteger > maxRangeInteger) {
 		player1Guess.innerText = "out of range";
 		player1Guess.style.color = "red";
 		player1Guess.style.fontSize = "200%";
@@ -115,11 +96,15 @@ function p1UpdateGuess() {
 }
 
 function p2UpdateGuess() {
-	if (player2GuessInput.value < minRangeNumber.value) {
+	var player2GuessInteger = parseInt(player2GuessInput.value);
+	var minRangeInteger = parseInt(minRangeInput.value);
+	var maxRangeInteger = parseInt(maxRangeInput.value);
+
+	if (player2GuessInteger < minRangeInteger) {
 		player2Guess.innerText = "out of range";
 		player2Guess.style.color = "red";
 		player2Guess.style.fontSize = "200%";
-		} else if (player2GuessInput.value > maxRangeNumber.value) {
+		} else if (player2GuessInteger > maxRangeInteger) {
 		player2Guess.innerText = "out of range";
 		player2Guess.style.color = "red";
 		player2Guess.style.fontSize = "200%";
