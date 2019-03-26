@@ -32,15 +32,20 @@ minRangeInput.addEventListener("input", function(e) {
 	}
 });
 
-updateButton.addEventListener("click", generateRandomNumber);
+updateButton.addEventListener("click", function(e) {
+	generateRandomNumber();
+	e.preventDefault();
+});
 
 submitButton.addEventListener('click', function(e) {
-		if (player1GuessInput.value === "" || null || player2GuessInput.value === "" || null) {
+	var player1GuessInteger = parseInt(player1GuessInput.value);
+	var player2GuessInteger = parseInt(player2GuessInput.value);
+
+		if (player1GuessInteger === "" || null || player2GuessInteger === "" || null) {
 		alert("Enter a number for both guess fields");
 	} else {
 		p1UpdateGuess();
 		p2UpdateGuess();
-		// dificulty();
 		}
 	});
 
@@ -80,7 +85,6 @@ function generateRandomNumber(e) {
 	maxRangeNumber.innerText = maxRangeInteger;
 	randomNumber = random();	
 	}
-	e.preventDefault();
 	console.log(randomNumber);
 }
 
@@ -94,6 +98,7 @@ function dificulty() {
 	var maxRangeInteger = parseInt(maxRangeInput.value);
 		minRangeNumber.innerText = minRangeInteger - 10;
 		maxRangeNumber.innerText = maxRangeInteger + 10;
+
 }
 
 function p1UpdateGuess() {
@@ -110,8 +115,8 @@ function p1UpdateGuess() {
 		player1Guess.style.color = "red";
 		player1Guess.style.fontSize = "200%";
 		} else {
-		challenger1Name.innerText = player1NameInput.value;
-		player1Guess.innerText = player1GuessInput.value;
+		challenger1Name.innerText = player1NameInput.vale;
+		player1Guess.innerText = player1GuessInteger;
 		p1HintMessage();
 	}
 }
@@ -131,7 +136,7 @@ function p2UpdateGuess() {
 		player2Guess.style.fontSize = "200%";
 		} else {
 		challenger2Name.innerText = player2NameInput.value;
-		player2Guess.innerText = player2GuessInput.value;
+		player2Guess.innerText = player2GuessInteger;
 		p2HintMessage();
 	}
 }
@@ -153,7 +158,7 @@ function p1HintMessage() {
 
 function p2HintMessage() {
 	if (player2GuessInput.value < randomNumber) {
-		player2Hint.innerText = "That's too low";
+		player2Hint.innerText = "That's too low!";
 	} else if (player2GuessInput.value > randomNumber) {
 		player2Hint.innerText = "That's too high!";
 	} else if (player2GuessInput.value === "") {
@@ -168,7 +173,7 @@ function p2HintMessage() {
 
 function appendCard() {
 	var winnerName = document.querySelector("#winner-name");
-	var guessCount = document.querySelector(".guess-count");
+	var guessCount = document.querySelectorAll(".guess-count");
 	var guessTime = document.querySelector(".minutes")
 	var cardCounter = cardCounter + 1;
 	var articleId = "result-card" + cardCounter;
@@ -184,7 +189,7 @@ function appendCard() {
 		<h2 id="winner-name" class"winner-name">Challenger 1 Name</h2>
 		<h2 class="right-card-winner">WINNER</h2>
 		<div class="result-card-stats">
-		<p><span class="guess-count"></span> GUESSES</p>
+		<p><span class="guess-count" data-card="${cardCounter}">${guessCount}</span> GUESSES</p>
 		<p><span class="minutes"></span> MINUTES</p>
 		<button class="delete-card" data-card="${cardCounter}">X</button>
 		</div>
@@ -194,6 +199,7 @@ function appendCard() {
 	for (var i = 0; i < deleteButtonArray.length; i++) {
 		deleteButtonArray[i].addEventListener('click', removeCard);
 	}
+
 }
 
 function theWinner() {
@@ -207,9 +213,6 @@ function theWinner() {
 }
 
 function resetGame(e) {
-	generateRandomNumber();
-	maxRangeNumber.value = "";
-	minRangeNumber.value = "";
 	player1NameInput.value = "";
 	player2NameInput.value = "";
 	player1GuessInput.value = "";
@@ -222,8 +225,10 @@ function resetGame(e) {
 	player2Hint.innerText = "";
 	document.getElementById("reset-game-button").disabled = true;
 	resetGameButton.style.backgroundColor = "#d0d2d3";
+	generateRandomNumber();
+	p1UpdateGuess();
+	p2UpdateGuess();
 
-	console.log("ok");
 	e.preventDefault();
 }
 
@@ -243,7 +248,10 @@ function removeCard(e) {
 	e.preventDefault();
 }
 
-
+function guessCount() {
+	
+	for (var i = 0; i < )
+}
 
 
 
