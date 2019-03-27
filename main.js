@@ -19,8 +19,7 @@ var sectionRight = document.querySelector(".section-right");
 var clearGameButton = document.querySelector("#clear-game-button");
 var resetGameButton = document.querySelector("#reset-game-button");
 var deleteButton = document.querySelector(".delete-card");
-
-
+var guessCounter = 0;
 
 minRangeInput.addEventListener("input", function(e) {
 	if (minRangeInput.value != "" || null && maxRangeInput.value != "" || null) {
@@ -46,10 +45,11 @@ submitButton.addEventListener('click', function(e) {
 	} else {
 		p1UpdateGuess();
 		p2UpdateGuess();
+		guessCount();
 		}
 	});
 
-player1GuessInput.addEventListener("input", function() {
+player1GuessInput.addEventListener("input", function(e) {
 	if (player1GuessInput.value != "" || null && player2GuessInput.value != "" || null) {
 		document.getElementById("clear-game-button").disabled = false;
 		clearGameButton.style.backgroundColor = "#6e6e6e";
@@ -115,7 +115,7 @@ function p1UpdateGuess() {
 		player1Guess.style.color = "red";
 		player1Guess.style.fontSize = "200%";
 		} else {
-		challenger1Name.innerText = player1NameInput.vale;
+		challenger1Name.innerText = player1NameInput.value;
 		player1Guess.innerText = player1GuessInteger;
 		p1HintMessage();
 	}
@@ -153,6 +153,8 @@ function p1HintMessage() {
 		appendCard();
 		theWinner();
 		dificulty();
+		guessCounter = 0;
+
 	}
 }
 
@@ -168,17 +170,16 @@ function p2HintMessage() {
 		appendCard();
 		theWinner();
 		dificulty();
+		guessCounter = 0;
 	}
 }
 
 function appendCard() {
 	var winnerName = document.querySelector("#winner-name");
-	var guessCount = document.querySelectorAll(".guess-count");
-	var guessTime = document.querySelector(".minutes")
+	var guessTime = document.querySelector(".minutes");
 	var cardCounter = cardCounter + 1;
 	var articleId = "result-card" + cardCounter;
 	var deleteId = "delete-card" + cardCounter;
-
 	sectionRight.innerHTML =
 	 ` <article class="result-card" data-card="${cardCounter}">
 		<div class="result-card-vs">
@@ -189,8 +190,8 @@ function appendCard() {
 		<h2 id="winner-name" class"winner-name">Challenger 1 Name</h2>
 		<h2 class="right-card-winner">WINNER</h2>
 		<div class="result-card-stats">
-		<p><span class="guess-count" data-card="${cardCounter}">${guessCount}</span> GUESSES</p>
-		<p><span class="minutes"></span> MINUTES</p>
+		<p class="right-card-guess-count" data-card="${cardCounter}">${guessCounter} GUESSES</p>
+		<p class="right-card-mins"> MINUTES</p>
 		<button class="delete-card" data-card="${cardCounter}">X</button>
 		</div>
 	   </article>
@@ -249,10 +250,10 @@ function removeCard(e) {
 }
 
 function guessCount() {
-	
-	for (var i = 0; i < )
+	guessCounter = guessCounter + 1;
+	console.log(guessCounter);
+	return guessCounter;
 }
-
 
 
 
