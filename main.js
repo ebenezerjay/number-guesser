@@ -232,8 +232,6 @@ function resetGame(e) {
 	document.getElementById("reset-game-button").disabled = true;
 	resetGameButton.style.backgroundColor = "#d0d2d3";
 	generateRandomNumber();
-	p1UpdateGuess();
-	p2UpdateGuess();
 	e.preventDefault();
 }
 
