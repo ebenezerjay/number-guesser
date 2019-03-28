@@ -106,8 +106,8 @@ function dificulty() {
 
 function p1UpdateGuess() {
 	var player1GuessInteger = parseInt(player1GuessInput.value);
-	var minRangeInteger = parseInt(minRangeNumber.value);
-	var maxRangeInteger = parseInt(maxRangeNumber.value);
+	var minRangeInteger = parseInt(minRangeInput.value);
+	var maxRangeInteger = parseInt(maxRangeInput.value);
 
 		if (player1GuessInteger < minRangeInteger) {
 		player1Guess.innerText = "out of range";
@@ -126,8 +126,8 @@ function p1UpdateGuess() {
 
 function p2UpdateGuess() {
 	var player2GuessInteger = parseInt(player2GuessInput.value);
-	var minRangeInteger = parseInt(minRangeNumber.value);
-	var maxRangeInteger = parseInt(maxRangeNumber.value);
+	var minRangeInteger = parseInt(minRangeInput.value);
+	var maxRangeInteger = parseInt(maxRangeInput.value);
 
 	if (player2GuessInteger < minRangeInteger) {
 		player2Guess.innerText = "out of range";
