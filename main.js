@@ -19,7 +19,10 @@ var sectionRight = document.querySelector(".section-right");
 var clearGameButton = document.querySelector("#clear-game-button");
 var resetGameButton = document.querySelector("#reset-game-button");
 var deleteButton = document.querySelector(".delete-card");
-var guessCounter = 0;
+var guessCounter = 1;
+var hiddenArticle = document.querySelector(".hidden-article");
+
+
 
 minRangeInput.addEventListener("input", function(e) {
 	if (minRangeInput.value != "" || null && maxRangeInput.value != "" || null) {
@@ -98,13 +101,13 @@ function dificulty() {
 	var maxRangeInteger = parseInt(maxRangeInput.value);
 		minRangeNumber.innerText = minRangeInteger - 10;
 		maxRangeNumber.innerText = maxRangeInteger + 10;
-
+	random();
 }
 
 function p1UpdateGuess() {
 	var player1GuessInteger = parseInt(player1GuessInput.value);
-	var minRangeInteger = parseInt(minRangeInput.value);
-	var maxRangeInteger = parseInt(maxRangeInput.value);
+	var minRangeInteger = parseInt(minRangeNumber.value);
+	var maxRangeInteger = parseInt(maxRangeNumber.value);
 
 		if (player1GuessInteger < minRangeInteger) {
 		player1Guess.innerText = "out of range";
@@ -123,8 +126,8 @@ function p1UpdateGuess() {
 
 function p2UpdateGuess() {
 	var player2GuessInteger = parseInt(player2GuessInput.value);
-	var minRangeInteger = parseInt(minRangeInput.value);
-	var maxRangeInteger = parseInt(maxRangeInput.value);
+	var minRangeInteger = parseInt(minRangeNumber.value);
+	var maxRangeInteger = parseInt(maxRangeNumber.value);
 
 	if (player2GuessInteger < minRangeInteger) {
 		player2Guess.innerText = "out of range";
@@ -142,43 +145,47 @@ function p2UpdateGuess() {
 }
 
 function p1HintMessage() {
-	if (player1GuessInput.value < randomNumber) {
+	var player1GuessInteger = parseInt(player1GuessInput.value);
+	var minRangeInteger = parseInt(minRangeInput.value);
+	var maxRangeInteger = parseInt(maxRangeInput.value);
+
+	if (player1GuessInteger < randomNumber) {
 		player1Hint.innerText = "That's too low!";
-	} else if (player1GuessInput.value > randomNumber) {
+	} else if (player1GuessInteger > randomNumber) {
 		player1Hint.innerText = "That's too high!";
-	} else if (player1GuessInput.value === "") {
+	} else if (player1GuessInteger === "" || null) {
 		player1Hint.innerText = "ERROR";
 		} else {
 		player1Hint.innerText = "Boom!";
 		appendCard();
 		theWinner();
 		dificulty();
-		guessCounter = 0;
 	}
 }
 
 function p2HintMessage() {
-	if (player2GuessInput.value < randomNumber) {
+	var player2GuessInteger = parseInt(player2GuessInput.value);
+	var minRangeInteger = parseInt(minRangeInput.value);
+	var maxRangeInteger = parseInt(maxRangeInput.value);
+
+	if (player2GuessInteger < randomNumber) {
 		player2Hint.innerText = "That's too low!";
-	} else if (player2GuessInput.value > randomNumber) {
+	} else if (player2GuessInteger > randomNumber) {
 		player2Hint.innerText = "That's too high!";
-	} else if (player2GuessInput.value === "") {
+	} else if (player2GuessInteger === "") {
 		player2Hint.innerText = "ERROR";
 	} else {
 		player2Hint.innerText = "Boom!";
 		appendCard();
 		theWinner();
 		dificulty();
-		guessCounter = 0;
 	}
 }
 
 function appendCard() {
 	var winnerName = document.querySelector("#winner-name");
-	var guessTime = document.querySelector(".minutes");
 	var cardCounter = cardCounter + 1;
-	var articleId = "result-card" + cardCounter;
-	var deleteId = "delete-card" + cardCounter;
+
 	sectionRight.innerHTML =
 	 ` <article class="result-card" data-card="${cardCounter}">
 		<div class="result-card-vs">
@@ -246,7 +253,7 @@ function removeCard(e) {
 }
 
 function guessCount() {
-	guessCounter = guessCounter + 1;
+	guessCounter++
 	console.log(guessCounter);
 	return guessCounter;
 }
