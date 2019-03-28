@@ -18,3 +18,13 @@ This image below was the comp for the mobile version:
 <img src="http://frontend.turing.io/assets/images/projects/number-guesser/week2-numberguesser-03.jpg">
 
 ## Project screenshots
+### Desktop 1
+![Project-Desktop1](Project-Desktop-screenshot.png)
+### Desktop 2
+![Project-Desktop2](project-desktop-screenshot2.png)
+### Mobile 1
+![Project-Mobile](project-mobile-screenshot.png)
+### Mobile 2
+![Project-Mobile2](project-mobile-screenshot2.png)
+### Mobile 3
+![Project-Mobile3](project-mobile-screenshot3.png)
